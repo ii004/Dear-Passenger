@@ -36,7 +36,7 @@
     },
     "com.meta.xr.sdk.audio": {
       "version": "64.0.0",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
