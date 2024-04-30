@@ -8,7 +8,8 @@ public class String : MonoBehaviour
 {
     [SerializeField] private Transform endpoint_1, endpoint_2;
     [SerializeField] private float pullThreshold = 2f;
-    
+    [SerializeField] private Animator lifeJacketAnimator; 
+
     private LineRenderer lineRenderer;
     private float stringLength;
     private bool _isGrabbed;
@@ -38,9 +39,14 @@ public class String : MonoBehaviour
         stringLength = Vector3.Distance(endpoint_1.localPosition, endpoint_2.localPosition);
         if (stringLength > pullThreshold) 
         {
-            //InflateLifeJacket();
+            InflateLifeJacket();
             Debug.Log("Jacket inflate!");
         }
+    }
+
+	private void InflateLifeJacket()
+	{
+        lifeJacketAnimator.SetBool("isInflated", true);
     }
 
     public void IsGrabbed()
