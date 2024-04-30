@@ -8,11 +8,13 @@ public class String : MonoBehaviour
 {
     [SerializeField] private Transform endpoint_1, endpoint_2;
     [SerializeField] private float pullThreshold = 2f;
-    [SerializeField] private Animator lifeJacketAnimator; 
-
+    [SerializeField] private Animator lifeJacketAnimator;
+    [SerializeField] private AudioSource inflateSound;
+    
     private LineRenderer lineRenderer;
     private float stringLength;
     private bool _isGrabbed;
+    private bool _isInflated = false;
         
     private void Awake()
     {
@@ -47,6 +49,8 @@ public class String : MonoBehaviour
 	private void InflateLifeJacket()
 	{
         lifeJacketAnimator.SetBool("isInflated", true);
+        if (!_isInflated) inflateSound.Play();
+        _isInflated = true;
     }
 
     public void IsGrabbed()
