@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class LifeJacketLocator : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) 
-    {
-        if (other.CompareTag("Player"))
-        {
-            
-        }
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            
-        }
-        
-    }
+    [SerializeField] private GameObject lifeJacket;
+    public bool isLifeJacketFound = false;
     
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !isLifeJacketFound)
+        {
+            lifeJacket.SetActive(true);
+            this.gameObject.SetActive(false);
+            
+            isLifeJacketFound = true;
+        }
+    }
 }
