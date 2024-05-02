@@ -8,15 +8,20 @@ public class WearLifeJacket : MonoBehaviour
     [SerializeField] private Transform targetPoint;
     [SerializeField] private GrabInteractable grabInteractable;
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] float zPositionOffset = 0.105f;  
+    [SerializeField] float zPositionOffset = 0.105f;
+    [SerializeField] private GameManager gameManager;
     
     private ClickInteractor _clickInteractor;
     private float _initialYPosition;
+    private bool _stateChanged = false;
+    private bool _movingToNextStep = false;
+    
     public bool isWearing = false;
+    
     
     private void OnTriggerEnter(Collider other)
     { 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Body"))
         {
             this.transform.position = targetPoint.transform.position;
             this.transform.rotation = targetPoint.transform.rotation;
@@ -25,9 +30,23 @@ public class WearLifeJacket : MonoBehaviour
             if (grabInteractable != null) grabInteractable.enabled = false;
             
             isWearing = true;
+            _stateChanged = true;
+            if (gameManager != null && !_movingToNextStep)
+            {
+                gameManager.NextState();
+                _movingToNextStep = true;
+            }
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Body"))
+        {
+            _stateChanged = false;
+        }
+    }
+    
     void Update()
     {
         if (isWearing)
@@ -44,6 +63,4 @@ public class WearLifeJacket : MonoBehaviour
         Vector3 currentPosition = transform.position;
         transform.position = new Vector3(currentPosition.x, currentPosition.y, cameraTransform.position.z + zPositionOffset);
     }
-    
-    
 }

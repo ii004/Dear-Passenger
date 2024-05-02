@@ -18,7 +18,7 @@ public class LifeJacketLocator : MonoBehaviour
 
             isLifeJacketFound = true;
 
-			if (gameManager != null) gameManager.CompleteStep(); 
+			if (gameManager != null) gameManager.NextState(); 
         }
     }
 }

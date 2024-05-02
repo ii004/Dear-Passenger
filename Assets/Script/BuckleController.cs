@@ -10,6 +10,8 @@ public class BuckleController : MonoBehaviour
     [SerializeField] private GrabInteractable grabInteractable;
 	[SerializeField] private float distanceThreshold = 0.03f;
 	[SerializeField] private AudioSource buckleClickSound;
+	[SerializeField] private GameManager gameManager;
+
 	private ClickInteractor _clickInteractor;
 	public bool isBuckleClicked = false;
     
@@ -36,5 +38,11 @@ public class BuckleController : MonoBehaviour
 
 		buckleClickSound.Play();
 		isBuckleClicked = true;
+
+		if (gameManager != null)
+		{
+			StartCoroutine(gameManager.DelayedNextState(0.5f));
+		}
+
 	}
 }

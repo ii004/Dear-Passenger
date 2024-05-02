@@ -10,12 +10,14 @@ public class String : MonoBehaviour
     [SerializeField] private float pullThreshold = 2f;
     [SerializeField] private Animator lifeJacketAnimator;
     [SerializeField] private AudioSource inflateSound;
-    
+    [SerializeField] private GameManager gameManager;
+
     private LineRenderer lineRenderer;
     private float stringLength;
     private bool _isGrabbed;
     private bool _isInflated = false;
-        
+    private bool _movingToNextStep = false;
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -51,6 +53,12 @@ public class String : MonoBehaviour
         lifeJacketAnimator.SetBool("isInflated", true);
         if (!_isInflated) inflateSound.Play();
         _isInflated = true;
+
+		if (gameManager != null && !_movingToNextStep)
+		{
+			StartCoroutine(gameManager.DelayedNextState(1.5f));
+			_movingToNextStep = true;
+		}
     }
 
     public void IsGrabbed()
@@ -67,8 +75,8 @@ public class String : MonoBehaviour
     {
         if (_isGrabbed)
         {
-            CreateString(null);
-            CalculateStringLength();
+            	CreateString(null);
+            	CalculateStringLength();
         }
     }
 }
