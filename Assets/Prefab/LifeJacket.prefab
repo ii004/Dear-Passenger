@@ -167,6 +167,7 @@ MonoBehaviour:
   grabInteractable: {fileID: 8069091943990878076}
   cameraTransform: {fileID: 0}
   zPositionOffset: 0.105
+  gameManager: {fileID: 0}
   isWearing: 0
 --- !u!1 &4543023332501593830
 GameObject:
@@ -591,6 +592,7 @@ MonoBehaviour:
   pullThreshold: 1
   lifeJacketAnimator: {fileID: 1967744465202835918}
   inflateSound: {fileID: 5528501306733377719}
+  gameManager: {fileID: 0}
 --- !u!1 &8547349556953451100
 GameObject:
   m_ObjectHideFlags: 0

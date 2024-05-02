@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
 
     private void OnVoiceOverComplete()
     {
-        
     }
     
     private int GetVoiceOverIndexForState(GameState state)
@@ -90,10 +89,5 @@ public class GameManager : MonoBehaviour
     private void OnFinalVoiceOverComplete()
     {
         Debug.Log("Training complete! Final voice-over finished.");
-    }
-
-    public void CompleteStep()
-    {
-        SetState((GameState)((int)currentState + 1)); 
     }
 }
