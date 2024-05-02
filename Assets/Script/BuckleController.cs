@@ -11,8 +11,8 @@ public class BuckleController : MonoBehaviour
 	[SerializeField] private float distanceThreshold = 0.03f;
 	[SerializeField] private AudioSource buckleClickSound;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private AudioManager audioManager;
 
-	private ClickInteractor _clickInteractor;
 	public bool isBuckleClicked = false;
     
 	public void CheckBucklesDistance()
@@ -41,7 +41,8 @@ public class BuckleController : MonoBehaviour
 
 		if (gameManager != null)
 		{
-			StartCoroutine(gameManager.DelayedNextState(0.5f));
+			audioManager.PlaySuccessSFX();
+			StartCoroutine(gameManager.DelayedNextState(1f));
 		}
 
 	}

@@ -11,6 +11,7 @@ public class String : MonoBehaviour
     [SerializeField] private Animator lifeJacketAnimator;
     [SerializeField] private AudioSource inflateSound;
     [SerializeField] private GameManager gameManager;
+	[SerializeField] private AudioManager audioManager;
 
     private LineRenderer lineRenderer;
     private float stringLength;
@@ -56,6 +57,7 @@ public class String : MonoBehaviour
 
 		if (gameManager != null && !_movingToNextStep)
 		{
+			audioManager.PlaySuccessSFX();
 			StartCoroutine(gameManager.DelayedNextState(1.5f));
 			_movingToNextStep = true;
 		}

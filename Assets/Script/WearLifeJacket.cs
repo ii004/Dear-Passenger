@@ -10,8 +10,8 @@ public class WearLifeJacket : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] float zPositionOffset = 0.105f;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private AudioManager audioManager;
     
-    private ClickInteractor _clickInteractor;
     private float _initialYPosition;
     private bool _stateChanged = false;
     private bool _movingToNextStep = false;
@@ -33,6 +33,7 @@ public class WearLifeJacket : MonoBehaviour
             _stateChanged = true;
             if (gameManager != null && !_movingToNextStep)
             {
+                audioManager.PlaySuccessSFX();
                 gameManager.NextState();
                 _movingToNextStep = true;
             }

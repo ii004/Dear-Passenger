@@ -7,7 +7,8 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] voiceOverClips;
-
+    [SerializeField] private AudioClip successfulSFX;
+    
     public void PlayVoiceOver(int clipIndex, Action onFinished = null)
     {
         Debug.Log($"Attempting to play voice over with clip index: {clipIndex}");
@@ -35,6 +36,16 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitWhile(() => audioSource.isPlaying);
         onFinished?.Invoke();
+    }
+    
+    public void PlaySuccessSFX()
+    {
+        if (successfulSFX != null) 
+        {
+            audioSource.PlayOneShot(successfulSFX); 
+        }
+
+        
     }
 
 }

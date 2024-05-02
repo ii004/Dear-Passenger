@@ -6,6 +6,7 @@ public class LifeJacketLocator : MonoBehaviour
 {
     [SerializeField] private GameObject lifeJacket;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private AudioManager audioManager;
 
     public bool isLifeJacketFound = false;
     
@@ -18,7 +19,11 @@ public class LifeJacketLocator : MonoBehaviour
 
             isLifeJacketFound = true;
 
-			if (gameManager != null) gameManager.NextState(); 
+			if (gameManager != null) 
+			{
+				audioManager.PlaySuccessSFX();
+				gameManager.NextState(); 
+			}
         }
     }
 }
