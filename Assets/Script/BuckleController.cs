@@ -8,20 +8,33 @@ public class BuckleController : MonoBehaviour
     [SerializeField] private GameObject targetPart;
     [SerializeField] private Transform targetPoint;
     [SerializeField] private GrabInteractable grabInteractable;
+	[SerializeField] private float distanceThreshold = 0.03f;
+	[SerializeField] private AudioSource buckleClickSound;
 	private ClickInteractor _clickInteractor;
+	public bool isBuckleClicked = false;
     
-    private void OnTriggerEnter(Collider other) 
-    {
-		Debug.Log("trigger2");
+	public void CheckBucklesDistance()
+	{
+		if (!isBuckleClicked && Vector3.Distance(transform.position, targetPoint.position) < distanceThreshold)
+    	{
+       		BuckleSnap();
+    	}
+	}
+	
+	private void BuckleSnap()
+	{
+		GrabInteractable targetGrabInteractable;
+
+		if (grabInteractable != null) grabInteractable.enabled = false;
+    	if (targetPart.TryGetComponent<GrabInteractable>(out targetGrabInteractable)) 
+		{
+        	targetGrabInteractable.enabled = false;
+    	}
+
 		this.transform.position = targetPoint.transform.position;
         this.transform.rotation = targetPoint.transform.rotation;
-        
-        if (grabInteractable != null) grabInteractable.enabled = false;
 
-        if (other.CompareTag("buckle")) 
-        {
-			Debug.Log("trigger");
-            _clickInteractor.ClickInteraction(targetPart,targetPoint,grabInteractable);
-        }
-    }
+		buckleClickSound.Play();
+		isBuckleClicked = true;
+	}
 }
