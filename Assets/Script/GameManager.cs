@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
     
     public void SetState(GameState newState)
     {
-        //audioManager.PlayVoiceOver(_currentStateIndex, OnVoiceOverComplete);
-        
         if (currentState != newState)
         {
+            currentState = newState;
+            OnStateChanged?.Invoke(newState);
             if (newState == GameState.Completed)
             {
                 audioManager.PlayVoiceOver(GetVoiceOverIndexForState(newState), OnFinalVoiceOverComplete);
