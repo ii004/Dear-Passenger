@@ -12,8 +12,15 @@ public class BuckleController : MonoBehaviour
     
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject == targetPart) 
+		Debug.Log("trigger2");
+		this.transform.position = targetPoint.transform.position;
+        this.transform.rotation = targetPoint.transform.rotation;
+        
+        if (grabInteractable != null) grabInteractable.enabled = false;
+
+        if (other.CompareTag("buckle")) 
         {
+			Debug.Log("trigger");
             _clickInteractor.ClickInteraction(targetPart,targetPoint,grabInteractable);
         }
     }

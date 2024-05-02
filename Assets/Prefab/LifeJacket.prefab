@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2935332418740048375}
   - component: {fileID: 4895214281486904633}
   - component: {fileID: 8069091943990878076}
+  - component: {fileID: 7816648181754565020}
+  - component: {fileID: 4438421596098409897}
   m_Layer: 0
   m_Name: LifeJacket
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3177798969338833160}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9961397, z: -0, w: 0.08778228}
+  m_LocalRotation: {x: 0, y: 0.9961397, z: 0, w: 0.087781794}
   m_LocalPosition: {x: 0.105, y: 0.923, z: 0.296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,12 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transferOnSecondSelection: 0
+  _transferOnSecondSelection: 1
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
   _oneGrabTransformer: {fileID: 0}
   _twoGrabTransformer: {fileID: 0}
-  _targetTransform: {fileID: 0}
+  _targetTransform: {fileID: 4964154792777263433}
   _maxGrabPoints: -1
 --- !u!54 &2935332418740048375
 Rigidbody:
@@ -128,6 +130,44 @@ MonoBehaviour:
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
   _physicsGrabbable: {fileID: 0}
+--- !u!65 &7816648181754565020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177798969338833160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.46, y: 0.72, z: 0.15}
+  m_Center: {x: 0.02, y: 0.51, z: -0.21}
+--- !u!114 &4438421596098409897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177798969338833160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d0a440a23e53459505b90d3093621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPoint: {fileID: 0}
+  grabInteractable: {fileID: 8069091943990878076}
+  cameraTransform: {fileID: 0}
+  zPositionOffset: 0.105
+  isWearing: 0
 --- !u!1 &4543023332501593830
 GameObject:
   m_ObjectHideFlags: 0
