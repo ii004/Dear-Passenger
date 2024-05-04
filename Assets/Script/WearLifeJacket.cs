@@ -8,7 +8,7 @@ public class WearLifeJacket : MonoBehaviour
     [SerializeField] private Transform targetPoint;
     [SerializeField] private GrabInteractable grabInteractable;
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] float zPositionOffset = 0.105f;
+    [SerializeField] float zPositionOffset = 0.2f;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private AudioManager audioManager;
     
@@ -61,7 +61,7 @@ public class WearLifeJacket : MonoBehaviour
         float updatedYPosition = _initialYPosition + (cameraTransform.position.y - _initialYPosition);
         transform.rotation = Quaternion.Euler(transform.parent.eulerAngles.x, cameraTransform.eulerAngles.y, 0);
        
-        Vector3 currentPosition = transform.position;
-        transform.position = new Vector3(currentPosition.x, currentPosition.y, cameraTransform.position.z + zPositionOffset);
+        //Vector3 currentPosition = transform.position;
+        //transform.position = new Vector3(currentPosition.x, currentPosition.y, cameraTransform.position.z + zPositionOffset);
     }
 }
