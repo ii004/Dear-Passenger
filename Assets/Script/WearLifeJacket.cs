@@ -18,7 +18,6 @@ public class WearLifeJacket : MonoBehaviour
     
     public bool isWearing = false;
     
-    
     private void OnTriggerEnter(Collider other)
     { 
         if (other.CompareTag("Body"))
